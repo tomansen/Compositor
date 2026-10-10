@@ -406,7 +406,7 @@ final class CanvasView: NSView {
     private var displayedTransformGeometry: TransformOverlayGeometry?
     private var hoverTrackingArea: NSTrackingArea?
     private static let rotationCursor: NSCursor = {
-        let symbol = NSImage(systemSymbolName: "arrow.triangle.2.circlepath", accessibilityDescription: "Rotate")!
+        let symbol = NSImage(systemSymbolName: "arrow.triangle.2.circlepath", accessibilityDescription: String(localized: "Rotate"))!
         let white = symbol.withSymbolConfiguration(.init(paletteColors: [.white]))!
         let black = symbol.withSymbolConfiguration(.init(paletteColors: [.black]))!
         let image = NSImage(size: NSSize(width: 24, height: 24), flipped: false) { _ in
@@ -663,7 +663,7 @@ final class CanvasView: NSView {
         clipsToBounds = true
         setAccessibilityElement(true)
         setAccessibilityRole(.image)
-        setAccessibilityLabel("Canvas")
+        setAccessibilityLabel(String(localized: "Canvas"))
         setAccessibilityIdentifier("editorCanvas")
     }
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }

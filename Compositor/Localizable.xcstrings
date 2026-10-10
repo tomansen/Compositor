@@ -51,6 +51,16 @@
         }
       }
     },
+    "%@ %@": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ %@"
+          }
+        }
+      }
+    },
     "%@ color": {
       "localizations": {
         "zh-Hans": {
@@ -1247,6 +1257,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "取消 "
+          }
+        }
+      }
+    },
+    "Canvas": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "画布"
           }
         }
       }
@@ -2741,6 +2761,16 @@
         }
       }
     },
+    "Delete %@": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "删除%@"
+          }
+        }
+      }
+    },
     "Delete Guide": {
       "localizations": {
         "zh-Hans": {
@@ -4211,6 +4241,16 @@
         }
       }
     },
+    "Font": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "字体"
+          }
+        }
+      }
+    },
     "Font face, including bold and italic variants": {
       "localizations": {
         "zh-Hans": {
@@ -4707,6 +4747,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "十六进制颜色"
+          }
+        }
+      }
+    },
+    "Hide": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "隐藏"
           }
         }
       }
@@ -6017,6 +6067,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "链接蒙版：%@"
+          }
+        }
+      }
+    },
+    "Linked": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已链接"
           }
         }
       }
