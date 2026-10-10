@@ -59,7 +59,7 @@ extension EditorSession {
         let color = isMaskSelected
             ? CGColor(gray: value.red, alpha: 1)
             : CGColor(colorSpace: CGColorSpace(name: CGColorSpace.sRGB)!, components: [value.red, value.green, value.blue, 1])!
-        await applyPixelEdit(to: layer, name: isMaskSelected ? "Fill Mask" : "Fill") { try $0.fill(color) }
+        await applyPixelEdit(to: layer, name: isMaskSelected ? String(localized: "Fill Mask") : "Fill") { try $0.fill(color) }
     }
 
     /// Delete with a selection: image pixels become transparent; on a mask the
@@ -126,7 +126,7 @@ extension EditorSession {
             // Only write over the layer the invert was computed from.
             guard let current = self.document?.layers[safe: index], current.id == layer.id,
                   current.asset?.image === layer.asset?.image, current.mask?.asset.image === layer.mask?.asset.image else { return }
-            beginEdit(mask ? "Invert Mask" : "Invert")
+            beginEdit(mask ? String(localized: "Invert Mask") : "Invert")
             if mask {
                 self.document?.layers[index].mask = current.mask.map { $0.replacing(asset) } ?? LayerMask(asset: asset)
             } else {
@@ -190,7 +190,7 @@ extension EditorSession {
             let moved = move.movedSelection
             do {
                 try move.applyOffset()
-                try await commitRasterEdit(move.raster, name: move.duplicate ? "Duplicate Pixels" : "Move Pixels") { self.document?.selection = moved }
+                try await commitRasterEdit(move.raster, name: move.duplicate ? String(localized: "Duplicate Pixels") : String(localized: "Move Pixels")) { self.document?.selection = moved }
             } catch { brushError = error.localizedDescription }
         }
         pixelMove = nil

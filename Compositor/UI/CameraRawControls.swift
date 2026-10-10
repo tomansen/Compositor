@@ -55,13 +55,13 @@ struct CameraRawControls: View {
             Text(readout)
                 .font(.caption.monospacedDigit())
                 .foregroundStyle(.secondary)
-                .help("Red, green, and blue of the pixel under the pointer.")
+                .help(String(localized: "Red, green, and blue of the pixel under the pointer."))
         }
     }
 
     private var readout: String {
-        guard let value = session.filterEdit?.cameraRawReadout else { return "R —   G —   B —" }
-        return "R \(value.red)   G \(value.green)   B \(value.blue)"
+        guard let value = session.filterEdit?.cameraRawReadout else { return String(localized: "R —   G —   B —") }
+        return String(localized: "R \(value.red)   G \(value.green)   B \(value.blue)")
     }
 
     private func clipButton(shadows: Bool) -> some View {
@@ -76,8 +76,8 @@ struct CameraRawControls: View {
                 .foregroundStyle(on ? (shadows ? Color.blue : Color.red) : Color.white.opacity(0.55))
         }
         .buttonStyle(.plain)
-        .help(shadows ? "Show clipped shadows in blue on the preview." : "Show clipped highlights in red on the preview.")
-        .accessibilityLabel(shadows ? "Shadow Clipping Indicator" : "Highlight Clipping Indicator")
+        .help(shadows ? String(localized: "Show clipped shadows in blue on the preview.") : String(localized: "Show clipped highlights in red on the preview."))
+        .accessibilityLabel(shadows ? String(localized: "Shadow Clipping Indicator") : String(localized: "Highlight Clipping Indicator"))
     }
 
     private func graph(_ scope: CameraRawScope?, mode: CameraRawScopeMode) -> some View {
@@ -103,7 +103,7 @@ struct CameraRawControls: View {
                 }
             }
         }
-        .accessibilityLabel(mode == .histogram ? "RGB histogram" : "Vectorscope")
+        .accessibilityLabel(mode == .histogram ? String(localized: "RGB histogram") : "Vectorscope")
     }
 
     private func ribbon(_ bins: [Double], color: Color, peak: Double, in context: GraphicsContext, size: CGSize) {
@@ -140,8 +140,8 @@ struct CameraRawControls: View {
                 if section == .color, raw.adjustsColor { eye(shown: session.filterEdit?.showsCameraRawColor ?? true, name: "Color", group: .color) }
                 if section == .effects, raw.adjustsEffects { eye(shown: session.filterEdit?.showsCameraRawEffects ?? true, name: "Effects", group: .effects) }
                 if section == .curve, raw.adjustsCurve { eye(shown: session.filterEdit?.showsCameraRawCurve ?? true, name: "Curve", group: .curve) }
-                if section == .colorMixer, raw.adjustsMixer { eye(shown: session.filterEdit?.showsCameraRawMixer ?? true, name: "Color Mixer", group: .mixer) }
-                if section == .colorGrading, raw.adjustsGrading { eye(shown: session.filterEdit?.showsCameraRawGrading ?? true, name: "Color Grading", group: .grading) }
+                if section == .colorMixer, raw.adjustsMixer { eye(shown: session.filterEdit?.showsCameraRawMixer ?? true, name: String(localized: "Color Mixer"), group: .mixer) }
+                if section == .colorGrading, raw.adjustsGrading { eye(shown: session.filterEdit?.showsCameraRawGrading ?? true, name: String(localized: "Color Grading"), group: .grading) }
                 if section == .detail, raw.adjustsDetail { eye(shown: session.filterEdit?.showsCameraRawDetail ?? true, name: "Detail", group: .detail) }
                 if section == .optics, raw.adjustsOptics { eye(shown: session.filterEdit?.showsCameraRawOptics ?? true, name: "Optics", group: .optics) }
                 if section == .geometry, raw.adjustsGeometry { eye(shown: session.filterEdit?.showsCameraRawGeometry ?? true, name: "Geometry", group: .geometry) }
@@ -185,12 +185,12 @@ struct CameraRawControls: View {
         VStack(alignment: .leading, spacing: 8) {
             HStack(spacing: 10) {
                 Text("White Balance").frame(minWidth: Self.labelWidth, alignment: .leading)
-                    .help("Auto balances the average color. Custom follows Temperature and Tint.")
+                    .help(String(localized: "Auto balances the average color. Custom follows Temperature and Tint."))
                 Picker("White Balance", selection: Binding(get: { raw.whiteBalance }, set: setWhiteBalance)) {
                     ForEach(CameraRawWhiteBalance.allCases, id: \.self) { Text($0.displayName).tag($0) }
                 }
                 .labelsHidden()
-                .help("Auto balances the average color. Custom follows Temperature and Tint.")
+                .help(String(localized: "Auto balances the average color. Custom follows Temperature and Tint."))
                 Button {
                     session.filterEdit?.samplesWhiteBalance.toggle()
                     session.brushRevision += 1
@@ -199,8 +199,8 @@ struct CameraRawControls: View {
                 }
                 .buttonStyle(.borderless)
                 .tint(session.filterEdit?.samplesWhiteBalance == true ? Color.accentColor : Color.secondary)
-                .help("Click a pixel that should be neutral.")
-                .accessibilityLabel("White Balance Selector")
+                .help(String(localized: "Click a pixel that should be neutral."))
+                .accessibilityLabel(String(localized: "White Balance Selector"))
             }
             if session.filterEdit?.samplesWhiteBalance == true {
                 Text("Click the original layer. Click the eyedropper again to stop.")
@@ -231,7 +231,7 @@ struct CameraRawControls: View {
             Picker("Style", selection: Binding(get: { raw.glowStyle }, set: { style in update { $0.cameraRaw.glowStyle = style } })) {
                 ForEach(CameraRawGlowStyle.allCases, id: \.self) { Text($0.displayName).tag($0) }
             }
-            .help("Diffusion is soft and wide, Bloom is tighter, and Halation is a red fringe.")
+            .help(String(localized: "Diffusion is soft and wide, Bloom is tighter, and Halation is a red fringe."))
             VStack(alignment: .leading, spacing: 8) {
                 slider(String(localized: "Range"), \.glowRange, range: CameraRawSettings.toneRange, decimals: 0, clipping: nil,
                        help: String(localized: "Chooses how bright an area must be to glow. Has no effect until Glow is raised."))
@@ -247,7 +247,7 @@ struct CameraRawControls: View {
             Picker("Style", selection: Binding(get: { raw.vignetteStyle }, set: { style in update { $0.cameraRaw.vignetteStyle = style } })) {
                 ForEach(CameraRawVignetteStyle.allCases, id: \.self) { Text($0.displayName).tag($0) }
             }
-            .help("Highlight Priority protects bright edges. Color Priority also reduces color. Paint Overlay covers the edges evenly.")
+            .help(String(localized: "Highlight Priority protects bright edges. Color Priority also reduces color. Paint Overlay covers the edges evenly."))
             VStack(alignment: .leading, spacing: 8) {
                 slider(String(localized: "Midpoint"), \.vignetteMidpoint, range: CameraRawSettings.unitRange, decimals: 0, clipping: nil,
                        reset: 50, help: String(localized: "Sets where the vignette begins, from the center outward."))

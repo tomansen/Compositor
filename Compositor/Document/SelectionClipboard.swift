@@ -165,7 +165,7 @@ extension EditorSession {
         guard !layer.isGroup else { return }
         do {
             guard let copied = try renderSelectedPixels(from: layer, mask: isMaskSelected) else { NSSound.beep(); return }
-            addPixelLayer(copied.image, at: copied.region.origin, name: nextLayerName(), editName: "Layer via Copy")
+            addPixelLayer(copied.image, at: copied.region.origin, name: nextLayerName(), editName: String(localized: "Layer via Copy"))
         } catch { brushError = error.localizedDescription }
     }
 

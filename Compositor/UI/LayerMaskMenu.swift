@@ -9,9 +9,9 @@ struct LayerMaskMenu: View {
         Button {
             session.addMask(revealing: NSApp.currentEvent?.modifierFlags.contains(.option) != true)
         } label: { FooterIcon(systemName: "rectangle.inset.filled") }
-        .help(session.selection == nil ? "Add layer mask (Option-click for a black mask)"
+        .help(session.selection == nil ? String(localized: "Add layer mask (Option-click for a black mask)")
               : "Add layer mask revealing the selection (Option-click to hide it)")
-        .accessibilityLabel("Add layer mask")
+        .accessibilityLabel(String(localized: "Add layer mask"))
         .disabled(!session.layersLookEditable || session.selectedLayerIDs.count != 1 || session.activeLayer == nil
                   || session.activeLayer?.mask != nil)
     }
@@ -44,11 +44,11 @@ final class MaskAloneBadgeView: NSView {
         name.font = .systemFont(ofSize: 12)
         name.textColor = NSColor.white.withAlphaComponent(0.6)
         name.lineBreakMode = .byTruncatingTail
-        let button = NSButton(image: NSImage(systemSymbolName: "xmark", accessibilityDescription: "Stop viewing the mask") ?? NSImage(),
+        let button = NSButton(image: NSImage(systemSymbolName: "xmark", accessibilityDescription: String(localized: "Stop viewing the mask")) ?? NSImage(),
                               target: nil, action: nil)
         button.isBordered = false
         button.symbolConfiguration = .init(pointSize: 9, weight: .bold)
-        button.toolTip = "Show the image again (or Option-click the mask thumbnail)"
+        button.toolTip = String(localized: "Show the image again (or Option-click the mask thumbnail)")
         stack = NSStackView(views: [icon, title, name, button])
         stack.spacing = 7
         stack.edgeInsets = NSEdgeInsets(top: 0, left: 11, bottom: 0, right: 8)

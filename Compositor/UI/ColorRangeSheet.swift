@@ -30,9 +30,9 @@ struct ColorRangeSheet: View {
                 TextField("Fuzziness", value: fuzziness, format: .number.precision(.fractionLength(0)))
                     .frame(width: 48).textFieldStyle(.roundedBorder).multilineTextAlignment(.trailing)
             }
-            .help("How far a color may be from the picked ones and still be selected")
+            .help(String(localized: "How far a color may be from the picked ones and still be selected"))
             Toggle("Invert", isOn: Binding(get: { edit?.invert ?? false }, set: { edit?.invert = $0; session.updateColorRange() }))
-                .help("Select everything except those colors, such as all but a green screen")
+                .help(String(localized: "Select everything except those colors, such as all but a green screen"))
             if let error = edit?.error {
                 Text(error).foregroundStyle(.orange).fixedSize(horizontal: false, vertical: true)
             }
@@ -72,9 +72,9 @@ struct ColorRangeSheet: View {
 
     private func help(_ mode: HueSampleMode) -> String {
         switch mode {
-        case .replace: "Click the image to select that color"
-        case .add: "Click the image to add that color to the selection"
-        case .remove: "Click the image to take that color out of the selection"
+        case .replace: String(localized: "Click the image to select that color")
+        case .add: String(localized: "Click the image to add that color to the selection")
+        case .remove: String(localized: "Click the image to take that color out of the selection")
         }
     }
 

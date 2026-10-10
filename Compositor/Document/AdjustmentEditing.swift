@@ -20,7 +20,7 @@ extension EditorSession {
         do {
             let raster = try await ImageExporter.shared.render(source)
             guard !Task.isCancelled, adjustmentEditingID == id, adjustmentOriginal == nil else { return }
-            let asset = ImportedImage(image: raster.image, thumbnail: try PixelAdjust.thumbnail(of: raster.image), name: "Adjustment input")
+            let asset = ImportedImage(image: raster.image, thumbnail: try PixelAdjust.thumbnail(of: raster.image), name: String(localized: "Adjustment input"))
             let layer = ImageLayer(asset: asset, origin: .zero)
             switch original.kind {
             case .invert: break

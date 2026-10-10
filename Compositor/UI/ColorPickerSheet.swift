@@ -68,7 +68,7 @@ struct ColorPickerSheet: View {
             hsb.saturation = min(1, max(0, value.location.x / fieldSize))
             hsb.brightness = 1 - min(1, max(0, value.location.y / fieldSize))
         })
-        .accessibilityLabel("Saturation and brightness")
+        .accessibilityLabel(String(localized: "Saturation and brightness"))
     }
 
     private var hueStrip: some View {
@@ -101,7 +101,7 @@ struct ColorPickerSheet: View {
             .fill(color.swiftUI)
             .overlay { RoundedRectangle(cornerRadius: 5, style: .continuous).strokeBorder(.black.opacity(0.6), lineWidth: 1) }
             .frame(width: 64, height: 64)
-            .accessibilityLabel("New color")
+            .accessibilityLabel(String(localized: "New color"))
     }
 
     private var fields: some View {
@@ -116,7 +116,7 @@ struct ColorPickerSheet: View {
                     .frame(width: 84)
                     .focused($hexFocused)
                     .onSubmit(commitHex)
-                    .accessibilityLabel("Hex color")
+                    .accessibilityLabel(String(localized: "Hex color"))
             }
         }
     }

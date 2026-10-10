@@ -102,8 +102,8 @@ struct HueSaturationSheet: View {
                 .buttonStyle(.plain)
                 .background(session.hueTargeting ? Color.accentColor.opacity(0.25) : .clear,
                             in: RoundedRectangle(cornerRadius: 4))
-                .help("Targeted adjustment: drag on the image to change that color's saturation, or its hue with Command held")
-                .accessibilityLabel("Targeted adjustment")
+                .help(String(localized: "Targeted adjustment: drag on the image to change that color's saturation, or its hue with Command held"))
+                .accessibilityLabel(String(localized: "Targeted adjustment"))
             }
         }
     }

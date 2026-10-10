@@ -464,7 +464,7 @@ final class EditorSession {
         let carried = selection.reduce(into: Set<UUID>()) { $0.formUnion(descendantIDs(of: $1)) }
         let targets = (document?.layers ?? []).filter { selection.contains($0.id) && !carried.contains($0.id) }.map(\.id)
         guard !targets.isEmpty else { return }
-        beginEdit(targets.count > 1 ? "Duplicate Layers" : "Duplicate Layer")
+        beginEdit(targets.count > 1 ? String(localized: "Duplicate Layers") : String(localized: "Duplicate Layer"))
         // Stacked as Duplicate Layer stacks them: several together above the topmost original.
         duplicateLayers(targets)
         let copies = selectedLayerIDs.subtracting(selection)
@@ -749,7 +749,7 @@ final class EditorSession {
 
     func toggleLayerVisibility(_ id: UUID) {
         guard canEditLayers, let index = document?.layers.firstIndex(where: { $0.id == id }) else { return }
-        beginEdit(document?.layers[index].isVisible == true ? "Hide Layer" : "Show Layer")
+        beginEdit(document?.layers[index].isVisible == true ? String(localized: "Hide Layer") : String(localized: "Show Layer"))
         defer { endEdit() }
         document?.layers[index].isVisible.toggle()
     }
@@ -759,7 +759,7 @@ final class EditorSession {
     func beginVisibilitySwipe(_ id: UUID) -> Bool? {
         guard canEditLayers, let layer = document?.layers.first(where: { $0.id == id }) else { return nil }
         let visible = !layer.isVisible
-        beginEdit(visible ? "Show Layer" : "Hide Layer")
+        beginEdit(visible ? String(localized: "Show Layer") : String(localized: "Hide Layer"))
         setVisibilityInSwipe(id, visible: visible)
         return visible
     }
@@ -825,7 +825,7 @@ final class EditorSession {
         while !pendingImports.isEmpty {
           let request = pendingImports.removeFirst()
           let psdOnly = request.files.allSatisfy { PSDReader.matches($0.0) }
-          beginEdit(psdOnly ? "Import Photoshop File" : "Import Images")
+          beginEdit(psdOnly ? String(localized: "Import Photoshop File") : String(localized: "Import Images"))
           // No document: the first successful image determines the canvas, regardless of drop point.
           let point = document == nil ? nil : request.point
           for (url, scoped) in request.files {
@@ -853,7 +853,7 @@ final class EditorSession {
                                                                          remainingPixels: DocumentLimits.documentPixelBudget - usedPixels)
                     insert(asset, centeredAt: point)
                 } else if PSDReader.matches(url) {
-                    beginPSDReading(title: "Open “\(url.lastPathComponent)”?", confirmTitle: "Import")
+                    beginPSDReading(title: String(localized: "Open “\(url.lastPathComponent)”?"), confirmTitle: "Import")
                     let imported: PSDImport
                     do {
                         let parsed = try await ImageImporter.shared.loadPhotoshop(url, remainingPixels: DocumentLimits.documentPixelBudget - usedPixels)

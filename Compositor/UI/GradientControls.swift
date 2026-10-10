@@ -12,7 +12,7 @@ struct GradientControls: View {
                         ForEach(GradientShape.allCases, id: \.self) { Text($0.displayName).tag($0) }
                     }
                     .pickerStyle(.segmented).labelsHidden().fixedSize()
-                    .help("Linear runs along the line; Radial spreads out from the start point")
+                    .help(String(localized: "Linear runs along the line; Radial spreads out from the start point"))
                     swatch
                     Picker("Colors", selection: $session.gradientSettings.style) {
                         ForEach(GradientStyle.allCases, id: \.self) { Text($0.displayName).tag($0) }
@@ -27,7 +27,7 @@ struct GradientControls: View {
                     .frame(width: 42).textFieldStyle(.roundedBorder)
                     .arrowSteps(value: { Double(session.gradientSettings.opacity * 100) },
                                 change: { session.gradientSettings.opacity = CGFloat(min(100, max(1, $0)) / 100) })
-                    .help("Press 1–9 for 10–90%, 0 for 100%")
+                    .help(String(localized: "Press 1–9 for 10–90%, 0 for 100%"))
                     .unitSuffix("%")
                 }
             }

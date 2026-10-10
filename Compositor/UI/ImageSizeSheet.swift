@@ -105,7 +105,7 @@ struct ImageSizeSheet: View {
     @ViewBuilder private var sheet: some View {
         VStack(alignment: .leading, spacing: 18) {
             Text("Image Size").font(.title2.bold())
-            Text("Current: \(document.width) × \(document.height) pixels").foregroundStyle(.secondary)
+            Text(String(localized: "Current: \(document.width) × \(document.height) pixels")).foregroundStyle(.secondary)
             Picker("Units", selection: $unit) {
                 ForEach(units.filter { resample || ($0 != "Pixels" && $0 != "Percent") }, id: \.self) { Text($0) }
             }
@@ -155,7 +155,7 @@ struct ImageSizeSheet: View {
                 Text("Only print dimensions and resolution change. Pixels stay unchanged.")
                     .font(.callout).foregroundStyle(.secondary)
             }
-            Text(valid ? "Result: \(Int(width.rounded())) × \(Int(height.rounded())) pixels" : "Use 1–\(DocumentLimits.maxSide.formatted()) pixels per side, up to \(DocumentLimits.maxSurfaceMegapixels) megapixels, and 1–9,600 pixels/inch.")
+            Text(valid ? String(localized: "Result: \(Int(width.rounded())) × \(Int(height.rounded())) pixels") : String(localized: "Use 1–\(DocumentLimits.maxSide.formatted()) pixels per side, up to \(DocumentLimits.maxSurfaceMegapixels) megapixels, and 1–9,600 pixels/inch."))
                 .foregroundStyle(valid ? Color.secondary : Color.orange).font(.callout)
             HStack {
                 Button("Cancel") { finish(nil) }.configuredNativeShortcut(.escape)

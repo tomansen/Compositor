@@ -16,7 +16,7 @@ struct LassoControls: View {
                             ForEach(LassoKind.marqueeChoices, id: \.self) { Text($0.displayName).tag($0) }
                         }
                         .pickerStyle(.segmented).labelsHidden().fixedSize()
-                        .help("Press M to switch between Rectangle and Ellipse")
+                        .help(String(localized: "Press M to switch between Rectangle and Ellipse"))
                     }
                     if session.tool == .wand {
                         Picker("Mode", selection: Binding(get: { session.wandMode }, set: { mode in
@@ -26,7 +26,7 @@ struct LassoControls: View {
                             ForEach(WandMode.allCases, id: \.self) { Text($0.displayName).tag($0) }
                         }
                         .pickerStyle(.segmented).labelsHidden().fixedSize()
-                        .help("Press Tab to switch between Wand and Object")
+                        .help(String(localized: "Press Tab to switch between Wand and Object"))
                     }
                     if session.tool == .lasso {
                         Picker("Lasso", selection: Binding(get: { session.lassoKind }, set: { kind in
@@ -36,7 +36,7 @@ struct LassoControls: View {
                             ForEach(LassoKind.lassoChoices, id: \.self) { Text($0.displayName).tag($0) }
                         }
                         .pickerStyle(.segmented).labelsHidden().fixedSize()
-                        .help("Press L to switch between Freehand and Polygonal")
+                        .help(String(localized: "Press L to switch between Freehand and Polygonal"))
                     }
                     // Shows held Shift/Option (or an outline's mode) live; clicking sets the choice.
                     Picker("Mode", selection: Binding(get: { session.displayedSelectionMode },
@@ -44,13 +44,13 @@ struct LassoControls: View {
                         ForEach(SelectionMode.allCases, id: \.self) { Text($0.displayName).tag($0) }
                     }
                                                       .pickerStyle(.segmented).labelsHidden().fixedSize()
-                                                      .help("Hold Shift to add or Option to subtract for one outline")
+                                                      .help(String(localized: "Hold Shift to add or Option to subtract for one outline"))
                     if session.tool == .wand, session.wandMode == .wand { wandControls }
                     if session.tool == .wand, session.wandMode == .object { objectSelectionControls }
                     // Rectangles snap to whole pixels, so smoothing doesn't apply (as in Photoshop); ellipses curve.
                     if session.tool == .lasso || session.tool == .wand || (session.tool == .marquee && session.marqueeKind == .ellipse) {
                         Toggle("Anti-alias", isOn: $session.selectionAntialiased)
-                            .help(session.tool == .wand && session.wandMode == .object ? "Smooth the detected object outline; turn off for the raw pixel mask" : "Smooth selection edges; turn off for hard pixel edges")
+                            .help(session.tool == .wand && session.wandMode == .object ? String(localized: "Smooth the detected object outline; turn off for the raw pixel mask") : String(localized: "Smooth selection edges; turn off for hard pixel edges"))
                     }
                     Divider().frame(height: 18)
                     modifyControl(String(localized: "Expand"), amount: $session.selectionExpandAmount) {
@@ -63,7 +63,7 @@ struct LassoControls: View {
                     HStack(spacing: 5) {
                         Button("Feather") { session.featherSelection(by: session.selectionFeatherAmount) }
                             .disabled(!session.canModifySelection)
-                            .help("Fade the edge of the selection by this many pixels")
+                            .help(String(localized: "Fade the edge of the selection by this many pixels"))
                         TextField("Feather", value: Binding(get: { Double(session.selectionFeatherAmount) },
                                                             set: { session.selectionFeatherAmount = $0.isFinite ? Int(min(250, max(1, $0))) : 2 }),
                                   format: .number.precision(.fractionLength(0)))
@@ -99,20 +99,20 @@ struct LassoControls: View {
                     .arrowSteps(value: { Double(session.wandSettings.tolerance) },
                                 change: { session.wandSettings.tolerance = Int(min(255, max(0, $0.rounded()))) })
             }
-            .help("How far each color channel (0–255) can differ from the clicked color and still be selected")
+            .help(String(localized: "How far each color channel (0–255) can differ from the clicked color and still be selected"))
             Picker("Sample Size", selection: $session.wandSettings.sampleSize) {
                 ForEach(WandSampleSize.allCases, id: \.self) { Text($0.displayName).tag($0) }
             }
             .labelsHidden().fixedSize()
-            .help("Match the clicked pixel, or the average of the pixels around it")
+            .help(String(localized: "Match the clicked pixel, or the average of the pixels around it"))
             Picker("Sample", selection: $session.wandSettings.sampleAllLayers) {
                 Text("This Layer").tag(false)
                 Text("All Layers").tag(true)
             }
             .pickerStyle(.segmented).labelsHidden().fixedSize()
-            .help("Read colors from the active layer only, or from every visible layer as shown")
+            .help(String(localized: "Read colors from the active layer only, or from every visible layer as shown"))
             Toggle("Contiguous", isOn: $session.wandSettings.contiguous)
-                .help("Select only similar pixels connected to the one you click; off selects them everywhere")
+                .help(String(localized: "Select only similar pixels connected to the one you click; off selects them everywhere"))
         }
     }
 
@@ -123,7 +123,7 @@ struct LassoControls: View {
                 Text("All Layers").tag(true)
             }
             .pickerStyle(.segmented).labelsHidden().fixedSize()
-            .help("Analyze the active layer only, or every visible layer as shown")
+            .help(String(localized: "Analyze the active layer only, or every visible layer as shown"))
             HStack(spacing: 6) {
                 Text("Edge").scrubbable(sensitivity: 1, value: $session.objectSelectionSettings.edgeOffset, range: -10...10)
                 TextField("Edge", value: Binding(get: { session.objectSelectionSettings.edgeOffset },
@@ -138,7 +138,7 @@ struct LassoControls: View {
             // The bar squeezes text before controls, so without this the label and unit collapse to
             // nothing the moment a selection adds its own buttons, leaving an unlabelled number box.
             .fixedSize()
-            .help("Positive values tighten the detected mask inward; negative values expand it outward")
+            .help(String(localized: "Positive values tighten the detected mask inward; negative values expand it outward"))
         }
     }
 
@@ -224,7 +224,7 @@ struct SelectionAmountSheet: View {
                     .multilineTextAlignment(.trailing).focused($focused)
                     .unitSuffix("px")
             }
-            Text("Enter a whole number from 1 to \(maximum) px.")
+            Text(String(localized: "Enter a whole number from 1 to \(maximum) px."))
                 .font(.callout).foregroundStyle(.secondary)
                 .opacity(amount == nil ? 1 : 0)
             Divider()

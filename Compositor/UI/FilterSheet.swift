@@ -37,7 +37,7 @@ struct FilterSheet: View {
                 control(String(localized: "Blues"), \.blackWhite.blues, range: BlackWhiteSettings.range, unit: "%", decimals: 0, logarithmic: false, track: .luminance(240))
                 control(String(localized: "Magentas"), \.blackWhite.magentas, range: BlackWhiteSettings.range, unit: "%", decimals: 0, logarithmic: false, track: .luminance(300))
                 Toggle("Tint", isOn: flag(\.blackWhite.tint))
-                    .help("Color the result while keeping its tones, for a sepia or a cyanotype")
+                    .help(String(localized: "Color the result while keeping its tones, for a sepia or a cyanotype"))
                 if settings.blackWhite.tint {
                     control(String(localized: "Hue"), \.blackWhite.tintHue, range: 0...360, unit: "°", decimals: 0, logarithmic: false, track: .plain)
                     control(String(localized: "Saturation"), \.blackWhite.tintSaturation, range: 0...100, unit: "%", decimals: 0, logarithmic: false,
@@ -60,7 +60,7 @@ struct FilterSheet: View {
                 control(String(localized: "Magenta / Green"), \.colorBalance.highlightMagentaGreen, range: ColorBalanceSettings.range, unit: "", decimals: 0, logarithmic: false, track: Self.magentaGreenTrack)
                 control(String(localized: "Yellow / Blue"), \.colorBalance.highlightYellowBlue, range: ColorBalanceSettings.range, unit: "", decimals: 0, logarithmic: false, track: Self.yellowBlueTrack)
                 Toggle("Preserve Luminosity", isOn: flag(\.colorBalance.preserveLuminosity))
-                    .help("Put each pixel's brightness back afterwards, so only the color moves")
+                    .help(String(localized: "Put each pixel's brightness back afterwards, so only the color moves"))
             case .grain:
                 control(String(localized: "Amount"), \.grain.amount, range: GrainSettings.amountRange, unit: "", decimals: 0, logarithmic: false)
                 control(String(localized: "Size"), \.grain.size, range: GrainSettings.sizeRange, unit: "px", decimals: 1, logarithmic: true)
@@ -73,14 +73,14 @@ struct FilterSheet: View {
                     ForEach(BackgroundQuality.allCases, id: \.self) { Text($0.displayName).tag($0) }
                 }
                 .pickerStyle(.segmented).labelsHidden()
-                .help("Basic is quick; Advanced refines the mask against the layer's own detail, for hair and fur")
+                .help(String(localized: "Basic is quick; Advanced refines the mask against the layer's own detail, for hair and fur"))
                 if settings.backgroundQuality == .advanced {
                     control(String(localized: "Refine"), \.refineEdges, range: 0...40, unit: "px", decimals: 0, logarithmic: false)
-                        .help("Pull the mask onto the image's own edges, which recovers hair and fur")
+                        .help(String(localized: "Pull the mask onto the image's own edges, which recovers hair and fur"))
                     control(String(localized: "Contrast"), \.matteContrast, range: 0...100, unit: "%", decimals: 0, logarithmic: false)
-                        .help("Clear the haze that leaves background showing through thin areas")
+                        .help(String(localized: "Clear the haze that leaves background showing through thin areas"))
                     control(String(localized: "Shift Edge"), \.shiftEdge, range: -10...10, unit: "px", decimals: 0, logarithmic: false)
-                        .help("Shrink the mask to drop the rim of background color around the subject, or grow it")
+                        .help(String(localized: "Shrink the mask to drop the rim of background color around the subject, or grow it"))
                 }
             case .contentAwareFill:
                 Text("Fill the selection using surrounding pixels from this layer.")
@@ -118,16 +118,16 @@ struct FilterSheet: View {
                             .contentShape(shape)
                     }
                     .buttonStyle(.plain)
-                    .help("Choose the vignette color")
+                    .help(String(localized: "Choose the vignette color"))
                     Spacer()
                 }
                 control(String(localized: "Amount"), \.vignetteAmount, range: 0...100, unit: "%", decimals: 0, logarithmic: false)
-                    .help("Blend the chosen color into the edges while keeping the center unchanged")
+                    .help(String(localized: "Blend the chosen color into the edges while keeping the center unchanged"))
                 control(String(localized: "Midpoint"), \.vignetteMidpoint, range: 0...100, unit: "%", decimals: 0, logarithmic: false)
                 control(String(localized: "Roundness"), \.vignetteRoundness, range: -100...100, unit: "", decimals: 0, logarithmic: false)
                 control(String(localized: "Feather"), \.vignetteFeather, range: 0...100, unit: "%", decimals: 0, logarithmic: false)
                 control(String(localized: "Highlights"), \.vignetteHighlights, range: 0...100, unit: "%", decimals: 0, logarithmic: false)
-                    .help("Protect bright areas near the edge")
+                    .help(String(localized: "Protect bright areas near the edge"))
             case .bloomGlow:
                 control(String(localized: "Amount"), \.bloomAmount, range: 0...100, unit: "%", decimals: 0, logarithmic: false)
                 control(String(localized: "Radius"), \.bloomRadius, range: 1...150, unit: "px", decimals: 0, logarithmic: true)
@@ -193,11 +193,11 @@ struct FilterSheet: View {
         }
         if dither.style.usesPixelSize {
         control(String(localized: "Pixel Size"), \.dither.pixelSize, range: DitherSettings.pixelSizeRange, unit: "px", decimals: 0, logarithmic: false)
-            .help("Make each dithered pixel this many pixels across, for a chunky old-screen look")
+            .help(String(localized: "Make each dithered pixel this many pixels across, for a chunky old-screen look"))
         }
         if dither.style == .ascii {
             control(String(localized: "Text Size"), \.dither.textSize, range: DitherSettings.textSizeRange, unit: "px", decimals: 0, logarithmic: false)
-                .help("The height of each line of characters")
+                .help(String(localized: "The height of each line of characters"))
         }
         if dither.style.isHalftone {
             control(String(localized: "Cell Size"), \.dither.cellSize, range: DitherSettings.cellSizeRange, unit: "px", decimals: 0, logarithmic: false)
@@ -211,18 +211,18 @@ struct FilterSheet: View {
                 TextField("Characters", text: Binding(get: { dither.characters }, set: { new in update { $0.dither.characters = new } }))
                     .textFieldStyle(.roundedBorder).font(.body.monospaced())
             }
-            .help("The characters to draw with, in any order: each spot gets the one whose ink best matches its tone")
+            .help(String(localized: "The characters to draw with, in any order: each spot gets the one whose ink best matches its tone"))
         }
         if dither.style.hasTones {
             control(String(localized: "Tones"), \.dither.levels, range: DitherSettings.levelsRange, unit: "", decimals: 0, logarithmic: false)
-                .help("Tones per channel: 2 is pure black and white")
+                .help(String(localized: "Tones per channel: 2 is pure black and white"))
         }
         if dither.style.diffuses {
             control(String(localized: "Diffusion"), \.dither.diffusion, range: 0...100, unit: "%", decimals: 0, logarithmic: false)
-                .help("How much of each pixel's error spreads to its neighbors. Less gives flatter areas")
+                .help(String(localized: "How much of each pixel's error spreads to its neighbors. Less gives flatter areas"))
         }
         control(String(localized: "Density"), \.dither.density, range: -100...100, unit: "", decimals: 0, logarithmic: false)
-            .help("More ink (darker) or less before dithering")
+            .help(String(localized: "More ink (darker) or less before dithering"))
         control(String(localized: "Contrast"), \.dither.contrast, range: -100...100, unit: "", decimals: 0, logarithmic: false)
         // A menu, like Style: the three choices as segments are wider than the panel, which then flips between
         // squeezing the row and wrapping it, resizing itself at every slider step.
@@ -244,39 +244,39 @@ struct FilterSheet: View {
                 ForEach(DitherPixelShape.allCases, id: \.self) { Text($0.displayName).tag($0) }
             }
             .fixedSize()
-            .help("Draw each chunky pixel as a solid square, or as a round dot like a dot-matrix screen")
+            .help(String(localized: "Draw each chunky pixel as a solid square, or as a round dot like a dot-matrix screen"))
         }
         if dither.style.drawsMarks {
             Toggle("Light on Dark", isOn: flag(\.dither.lightOnDark))
-                .help("Draw the marks for the light tones on the dark color, like a glowing screen")
+                .help(String(localized: "Draw the marks for the light tones on the dark color, like a glowing screen"))
         }
     }
 
     @ViewBuilder private var scanlinesControls: some View {
         let lines = settings.scanlines
         control(String(localized: "Line Spacing"), \.scanlines.lineSpacing, range: ScanlinesSettings.lineSpacingRange, unit: "px", decimals: 0, logarithmic: false)
-            .help("How far apart the screen's lines are")
+            .help(String(localized: "How far apart the screen's lines are"))
         control(String(localized: "Thickness"), \.scanlines.thickness, range: 5...100, unit: "%", decimals: 0, logarithmic: false)
-            .help("How much of the gap a bright line fills; dimmer parts draw it thinner")
+            .help(String(localized: "How much of the gap a bright line fills; dimmer parts draw it thinner"))
         control(String(localized: "Glow"), \.scanlines.glow, range: 0...100, unit: "%", decimals: 0, logarithmic: false)
-            .help("Light blooming around the lines, like a CRT's phosphors")
+            .help(String(localized: "Light blooming around the lines, like a CRT's phosphors"))
         control(String(localized: "Dots"), \.scanlines.dots, range: 0...100, unit: "%", decimals: 0, logarithmic: false)
-            .help("Break the lines into beads where the picture is darker than this, blending into solid lines where it's brighter")
+            .help(String(localized: "Break the lines into beads where the picture is darker than this, blending into solid lines where it's brighter"))
         control(String(localized: "Displace"), \.scanlines.displace, range: ScanlinesSettings.displaceRange, unit: "px", decimals: 0, logarithmic: false)
-            .help("Lift the lines where the picture is bright, or lower them when negative, so they swell into its shapes")
+            .help(String(localized: "Lift the lines where the picture is bright, or lower them when negative, so they swell into its shapes"))
         control(String(localized: "Smoothness"), \.scanlines.smoothness, range: 0...100, unit: "%", decimals: 0, logarithmic: false)
-            .help("How far the brightness is smoothed before it displaces the lines, from sharp ridges to rounded hills")
+            .help(String(localized: "How far the brightness is smoothed before it displaces the lines, from sharp ridges to rounded hills"))
         control(String(localized: "Threshold"), \.scanlines.threshold, range: 0...100, unit: "%", decimals: 0, logarithmic: false)
-            .help("Draw no line where the picture is darker than this, leaving the screen dark")
+            .help(String(localized: "Draw no line where the picture is darker than this, leaving the screen dark"))
         control(String(localized: "Wobble"), \.scanlines.wobble, range: ScanlinesSettings.wobbleRange, unit: "px", decimals: 0, logarithmic: false)
-            .help("Make the lines waver sideways down the screen, like a CRT losing sync")
+            .help(String(localized: "Make the lines waver sideways down the screen, like a CRT losing sync"))
         control(String(localized: "Color Split"), \.scanlines.split, range: ScanlinesSettings.splitRange, unit: "px", decimals: 0, logarithmic: false)
-            .help("Move the red and blue apart, for colored fringes on the lines")
+            .help(String(localized: "Move the red and blue apart, for colored fringes on the lines"))
         control(String(localized: "Density"), \.scanlines.density, range: -100...100, unit: "", decimals: 0, logarithmic: false)
-            .help("Darker or lighter before the lines are drawn")
+            .help(String(localized: "Darker or lighter before the lines are drawn"))
         control(String(localized: "Contrast"), \.scanlines.contrast, range: -100...100, unit: "", decimals: 0, logarithmic: false)
         control(String(localized: "Black Level"), \.scanlines.blackLevel, range: 0...100, unit: "%", decimals: 0, logarithmic: false)
-            .help("How bright the lines are where the picture is black, so they show even over black")
+            .help(String(localized: "How bright the lines are where the picture is black, so they show even over black"))
         Picker("Colors", selection: Binding(get: { lines.colors }, set: { new in update { $0.scanlines.colors = new } })) {
             ForEach(DitherColors.allCases, id: \.self) { Text($0.displayName).tag($0) }
         }
@@ -393,7 +393,7 @@ struct GradientMapControls: View {
                     .contentShape(shape)
             }
             .buttonStyle(.plain)
-            .help("Choose the \(title.lowercased()) color")
+            .help(String(localized: "Choose the \(title.lowercased()) color"))
             .accessibilityLabel("\(title) color")
             Text(title)
         }

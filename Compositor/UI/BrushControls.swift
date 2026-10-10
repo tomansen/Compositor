@@ -12,14 +12,14 @@ struct BrushControls: View {
                             ForEach(BrushToolMode.allCases, id: \.self) { Text($0.displayName).tag($0) }
                         }
                         .pickerStyle(.segmented).labelsHidden().fixedSize()
-                        .help("Paint with the foreground color (B), or erase pixels away (E)")
+                        .help(String(localized: "Paint with the foreground color (B), or erase pixels away (E)"))
                     }
                     if session.tool == .blur {
                         Picker("Mode", selection: $session.blurMode) {
                             ForEach(BlurToolMode.allCases, id: \.self) { Text($0.displayName).tag($0) }
                         }
                         .pickerStyle(.segmented).labelsHidden().fixedSize()
-                        .help("Liquify pushes pixels · Blur softens · Smudge drags color along")
+                        .help(String(localized: "Liquify pushes pixels · Blur softens · Smudge drags color along"))
                     }
                     if session.tool == .spotHealing {
                         Picker("Type", selection: $session.spotHealingMode) {
@@ -30,13 +30,13 @@ struct BrushControls: View {
                     }
                     if session.tool == .cloneStamp {
                         Toggle("Aligned", isOn: $session.cloneSettings.aligned)
-                            .help("Keep the source moving with the brush between strokes; off starts every stroke at the source point")
+                            .help(String(localized: "Keep the source moving with the brush between strokes; off starts every stroke at the source point"))
                         Picker("Sample", selection: $session.cloneSettings.sampleAllLayers) {
                             Text("This Layer").tag(false)
                             Text("All Layers").tag(true)
                         }
                         .pickerStyle(.segmented).labelsHidden().fixedSize()
-                        .help("Copy from the active layer only, or from every visible layer as shown")
+                        .help(String(localized: "Copy from the active layer only, or from every visible layer as shown"))
                     }
                     Text("Size").scrubbable(sensitivity: 1.0, value: $session.brushSettings.diameter, range: 1...2000)
                     TextField("Size", value: Binding<Double>(get: { Double(session.brushSettings.diameter) },
@@ -67,7 +67,7 @@ struct BrushControls: View {
                     .frame(width: 42).textFieldStyle(.roundedBorder)
                     .arrowSteps(value: { Double(session.brushSettings.opacity * 100) },
                                 change: { session.brushSettings.opacity = CGFloat(min(100, max(1, $0)) / 100) })
-                    .help("Press 1–9 for 10–90%, 0 for 100%")
+                    .help(String(localized: "Press 1–9 for 10–90%, 0 for 100%"))
                     .unitSuffix("%")
                     // Blur softens by a radius of its own, apart from how strongly it lays the softening down.
                     if session.tool == .blur, session.blurMode == .blur {
@@ -81,7 +81,7 @@ struct BrushControls: View {
                         .frame(width: 42).textFieldStyle(.roundedBorder)
                         .arrowSteps(value: { Double(session.brushSettings.blurRadius) },
                                     change: { session.brushSettings.blurRadius = CGFloat(min(50, max(0.5, $0))) })
-                        .help("How far the blur softens, in pixels")
+                        .help(String(localized: "How far the blur softens, in pixels"))
                         .unitSuffix("px")
                     }
                     // Paint and Erase only: healing, cloning and smearing have their own feel.
@@ -95,7 +95,7 @@ struct BrushControls: View {
                         .frame(width: 42).textFieldStyle(.roundedBorder)
                         .arrowSteps(value: { Double(session.brushSettings.smoothing) },
                                     change: { session.brushSettings.smoothing = CGFloat(min(100, max(0, $0))) })
-                        .help("The brush trails the pointer on a string this long, so a shaky hand still draws a smooth line")
+                        .help(String(localized: "The brush trails the pointer on a string this long, so a shaky hand still draws a smooth line"))
                     }
                     if session.isMaskSelected {
                         Picker("Paint", selection: $session.maskPaintWhite) {
@@ -116,8 +116,8 @@ struct BrushControls: View {
                             }
                             .buttonStyle(.plain)
                             .disabled(!session.canEditPalette)
-                            .help("Foreground color")
-                            .accessibilityLabel("Foreground color")
+                            .help(String(localized: "Foreground color"))
+                            .accessibilityLabel(String(localized: "Foreground color"))
                         }
                     }
                     Spacer(minLength: 0)

@@ -74,7 +74,7 @@ struct NewCanvasSheet: View {
     private var valid: Bool { pixelWidth != nil && pixelHeight != nil }
     private var resolutionHelp: String {
         let size = unit != .pixels ? pixelWidth.flatMap { w in pixelHeight.map { h in " · \(Int(resolution)) DPI: \(w) × \(h) pixels" } } : nil
-        return "Resolution: 72 for screens, 300 for print. Click to switch." + (size ?? "")
+        return String(localized: "Resolution: 72 for screens, 300 for print. Click to switch.") + (size ?? "")
     }
     /// Shows the sizes in another unit, the same canvas written differently.
     private func switchUnit(to new: NewCanvasUnit) {
@@ -117,8 +117,8 @@ struct NewCanvasSheet: View {
                             .padding(.trailing, -10)
                     }
                     .menuStyle(.button).buttonStyle(.plain).menuIndicator(.hidden).fixedSize()
-                    .help("Preset sizes for screens and common formats")
-                    .accessibilityLabel("Preset sizes")
+                    .help(String(localized: "Preset sizes for screens and common formats"))
+                    .accessibilityLabel(String(localized: "Preset sizes"))
                 }
             }
             HStack(spacing: 16) {
@@ -147,8 +147,8 @@ struct NewCanvasSheet: View {
             }
             .font(.callout).foregroundStyle(.secondary)
             if !valid {
-                Text(unit == .pixels ? "Enter whole numbers from 1 to \(DocumentLimits.maxSide.formatted()) pixels."
-                                     : "Enter a size up to \(DocumentLimits.maxSide.formatted()) pixels at this DPI.")
+                Text(unit == .pixels ? String(localized: "Enter whole numbers from 1 to \(DocumentLimits.maxSide.formatted()) pixels.")
+                                     : String(localized: "Enter a size up to \(DocumentLimits.maxSide.formatted()) pixels at this DPI."))
                     .font(.callout).foregroundStyle(.orange)
             }
             HStack(spacing: 10) {
@@ -250,15 +250,15 @@ struct CanvasPreset: Identifiable, Hashable {
         [
             CanvasPreset(title: "iPhone 18 Pro", width: 1206, height: 2622),
             CanvasPreset(title: "iPhone 18 Pro Max", width: 1320, height: 2868),
-            CanvasPreset(title: "MacBook Pro 14\"", width: 3024, height: 1964),
-            CanvasPreset(title: "MacBook Pro 16\"", width: 3456, height: 2234),
-            CanvasPreset(title: "Studio Display", width: 5120, height: 2880),
+            CanvasPreset(title: String(localized: "MacBook Pro 14\""), width: 3024, height: 1964),
+            CanvasPreset(title: String(localized: "MacBook Pro 16\""), width: 3456, height: 2234),
+            CanvasPreset(title: String(localized: "Studio Display"), width: 5120, height: 2880),
         ],
         [
-            CanvasPreset(title: "Instagram Square", width: 1080, height: 1080),
-            CanvasPreset(title: "Instagram Portrait", width: 1080, height: 1350),
-            CanvasPreset(title: "Instagram Story", width: 1080, height: 1920),
-            CanvasPreset(title: "YouTube Thumb", width: 1080, height: 608),
+            CanvasPreset(title: String(localized: "Instagram Square"), width: 1080, height: 1080),
+            CanvasPreset(title: String(localized: "Instagram Portrait"), width: 1080, height: 1350),
+            CanvasPreset(title: String(localized: "Instagram Story"), width: 1080, height: 1920),
+            CanvasPreset(title: String(localized: "YouTube Thumb"), width: 1080, height: 608),
         ],
     ]
     static let all = groups.flatMap { $0 }

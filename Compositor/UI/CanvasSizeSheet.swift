@@ -9,7 +9,7 @@ struct CanvasSizeSheet: View {
     @State private var anchor = 4
     @State private var extensionChoice = "Transparent"
     @State private var customColor = PaletteColor.white
-    private let anchorNames = ["Top left", "Top center", "Top right", "Middle left", "Center", "Middle right", "Bottom left", "Bottom center", "Bottom right"]
+    private let anchorNames = [String(localized: "Top left"), String(localized: "Top center"), String(localized: "Top right"), String(localized: "Middle left"), "Center", String(localized: "Middle right"), String(localized: "Bottom left"), String(localized: "Bottom center"), String(localized: "Bottom right")]
 
     init(document: CanvasDocument, session: EditorSession, finish: @escaping (CanvasSizeOptions?) -> Void) {
         self.foreground = session.foregroundColor
@@ -67,7 +67,7 @@ struct CanvasSizeSheet: View {
     @ViewBuilder private var sheet: some View {
         VStack(alignment: .leading, spacing: 16) {
             Text("Canvas Size").font(.title2.bold())
-            Text("Current: \(draft.originalWidth) × \(draft.originalHeight) pixels")
+            Text(String(localized: "Current: \(draft.originalWidth) × \(draft.originalHeight) pixels"))
             Text("\(bytes(draft.originalWidth, draft.originalHeight)) uncompressed RGBA canvas")
                 .font(.callout).foregroundStyle(.secondary)
             Divider()
@@ -90,10 +90,10 @@ struct CanvasSizeSheet: View {
                     if locked { draft.set(draft.displayed(widthAxis: true), widthAxis: true) }
                 }
             if draft.valid {
-                Text("New: \(Int(draft.width.rounded())) × \(Int(draft.height.rounded())) pixels · \(bytes(Int(draft.width.rounded()), Int(draft.height.rounded()))) uncompressed")
+                Text(String(localized: "New: \(Int(draft.width.rounded())) × \(Int(draft.height.rounded())) pixels · \(bytes(Int(draft.width.rounded()), Int(draft.height.rounded()))) uncompressed"))
                     .font(.callout).foregroundStyle(.secondary)
             } else {
-                Text("Final dimensions must be 1–\(DocumentLimits.maxSide.formatted()) pixels per side.")
+                Text(String(localized: "Final dimensions must be 1–\(DocumentLimits.maxSide.formatted()) pixels per side."))
                     .font(.callout).foregroundStyle(.orange)
             }
             HStack(alignment: .top, spacing: 24) {
@@ -128,8 +128,8 @@ struct CanvasSizeSheet: View {
             if extensionChoice == "Custom" {
                 HStack(spacing: 8) {
                     Text("Extension color")
-                    DialogColorSwatch(title: "Extension Color", color: $customColor, session: session)
-                        .help("Color for the added canvas")
+                    DialogColorSwatch(title: String(localized: "Extension Color"), color: $customColor, session: session)
+                        .help(String(localized: "Color for the added canvas"))
                 }
             }
             HStack {

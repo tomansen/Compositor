@@ -58,10 +58,10 @@ struct ExportAsSheet: View {
                 Text("Export As").font(.title2.bold())
                 Spacer()
                 Button("Fit") { zoom = nil }.disabled(zoom == nil)
-                    .help("Show the whole image (⌘0)")
+                    .help(String(localized: "Show the whole image (⌘0)"))
                 Button { zoomBy(1) } label: { Image(systemName: "plus.magnifyingglass") }
                     .disabled(JPEGPreview.step(from: shownZoom, in: 1) == nil)
-                    .help("Zoom in (⌘+), now \(percent). At 100% each pixel of the export is one pixel of the screen")
+                    .help(String(localized: "Zoom in (⌘+), now \(percent). At 100% each pixel of the export is one pixel of the screen"))
                 Button { zoomBy(-1) } label: { Image(systemName: "minus.magnifyingglass") }
                     .disabled(JPEGPreview.step(from: shownZoom, in: -1) == nil)
                     .help("Zoom out (⌘−), now \(percent)")
@@ -76,7 +76,7 @@ struct ExportAsSheet: View {
                     ProgressView().padding().background(.regularMaterial, in: RoundedRectangle(cornerRadius: 8))
                 }
             }.frame(width: JPEGPreview.frame.width, height: JPEGPreview.frame.height).clipped()
-                .help("Drag or scroll to move around; double-click switches between Fit and 100%")
+                .help(String(localized: "Drag or scroll to move around; double-click switches between Fit and 100%"))
             Grid(alignment: .leadingFirstTextBaseline, horizontalSpacing: 12, verticalSpacing: 12) {
                 GridRow {
                     Text("Format")
@@ -88,16 +88,16 @@ struct ExportAsSheet: View {
                 GridRow {
                     Text("Size")
                     HStack(spacing: 6) {
-                        sizeField(width, set: setWidth).help("Width in pixels; the height follows, keeping the proportions")
+                        sizeField(width, set: setWidth).help(String(localized: "Width in pixels; the height follows, keeping the proportions"))
                         Text("×").foregroundStyle(.secondary)
-                        sizeField(height, set: setHeight).help("Height in pixels; the width follows, keeping the proportions")
+                        sizeField(height, set: setHeight).help(String(localized: "Height in pixels; the width follows, keeping the proportions"))
                         Text("px").foregroundStyle(.secondary)
                         Menu("\(scalePercent)%") {
                             ForEach([25, 50, 75, 100, 200], id: \.self) { percent in
                                 Button("\(percent)%") { setScale(Double(percent) / 100) }
                             }
                         }
-                        .fixedSize().help("Scale the export: the document stays as it is")
+                        .fixedSize().help(String(localized: "Scale the export: the document stays as it is"))
                     }
                 }
                 if format == .jpeg {
@@ -119,8 +119,8 @@ struct ExportAsSheet: View {
                 if format != .png {
                     GridRow {
                         Text("Background")
-                        DialogColorSwatch(title: "Export Background", color: matte, session: session)
-                            .help("Color that fills transparent areas")
+                        DialogColorSwatch(title: String(localized: "Export Background"), color: matte, session: session)
+                            .help(String(localized: "Color that fills transparent areas"))
                     }
                 }
             }

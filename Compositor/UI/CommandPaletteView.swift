@@ -72,7 +72,12 @@ struct CommandPaletteView: View {
 final class CommandPaletteController {
     static let shared = CommandPaletteController()
     /// Left out of the palette: the palette itself and the system menus.
-    static let skipped: Set<String> = ["Search Commands…", "Window", "Help", "Services"]
+    /// Titles left out of the palette. Kept in both languages: the palette's own item is localized by the
+    /// app, while Window and Help carry the titles AppKit localizes itself.
+    static var skipped: Set<String> {
+        let names = ["Search Commands…", "Window", "Help", "Services"]
+        return Set(names).union(names.map { NSLocalizedString($0, comment: "") })
+    }
 
     private(set) var panel: PalettePanel?
     private weak var window: NSWindow?

@@ -14,7 +14,7 @@ struct CameraRawGeometryControls: View {
             }
             .labelsHidden()
             .pickerStyle(.segmented)
-            .help("Off leaves the picture as it is. Guided straightens from lines you draw on the picture.")
+            .help(String(localized: "Off leaves the picture as it is. Guided straightens from lines you draw on the picture."))
             if raw.geometry.upright == .guided {
                 Button {
                     session.filterEdit?.drawingCameraRawGeometryGuide.toggle()
@@ -22,7 +22,7 @@ struct CameraRawGeometryControls: View {
                 } label: {
                     Label("Draw Guides", systemImage: "line.diagonal")
                 }
-                .help("Draw two or more lines on the preview that should be level or vertical.")
+                .help(String(localized: "Draw two or more lines on the preview that should be level or vertical."))
                 .tint(session.filterEdit?.drawingCameraRawGeometryGuide == true ? Color.accentColor : Color.secondary)
                 if session.filterEdit?.drawingCameraRawGeometryGuide == true {
                     Text("Drag on the layer to place a guide. Draw at least two lines.")
@@ -32,13 +32,13 @@ struct CameraRawGeometryControls: View {
                     Button("Clear Guides") {
                         update { $0.cameraRaw.geometry.guides = [] }
                     }
-                    .help("Remove every guide line.")
+                    .help(String(localized: "Remove every guide line."))
                 }
             }
             Picker("Projection", selection: binding(\.projection)) {
                 ForEach(CameraRawProjection.allCases, id: \.self) { Text($0.displayName).tag($0) }
             }
-            .help("Perspective allows stronger keystone. Rectilinear keeps the warp gentler.")
+            .help(String(localized: "Perspective allows stronger keystone. Rectilinear keeps the warp gentler."))
             geometrySlider(String(localized: "Vertical"), \.vertical, help: String(localized: "Straightens vertical lines toward the center."))
             geometrySlider(String(localized: "Horizontal"), \.horizontal, help: String(localized: "Straightens horizontal lines toward the center."))
             geometrySlider(String(localized: "Rotate"), \.rotate, range: CameraRawGeometrySettings.rotateRange, help: String(localized: "Rotates the picture around its center."))
@@ -47,7 +47,7 @@ struct CameraRawGeometryControls: View {
             geometrySlider(String(localized: "Offset X"), \.offsetX, help: String(localized: "Moves the picture left or right."))
             geometrySlider(String(localized: "Offset Y"), \.offsetY, help: String(localized: "Moves the picture up or down."))
             Toggle("Constrain Crop", isOn: binding(\.constrainCrop))
-                .help("Crops empty edges after the transform and fits the result back into the frame.")
+                .help(String(localized: "Crops empty edges after the transform and fits the result back into the frame."))
         }
     }
 
@@ -97,7 +97,7 @@ struct CameraRawCalibrationControls: View {
             Picker("Process", selection: binding(\.process)) {
                 ForEach(CameraRawProcessVersion.allCases, id: \.self) { Text($0.displayName).tag($0) }
             }
-            .help("Chooses how strongly the calibration sliders below are applied. Version 6 is the current default.")
+            .help(String(localized: "Chooses how strongly the calibration sliders below are applied. Version 6 is the current default."))
             Text(raw.calibration.process.summary)
                 .font(.caption)
                 .foregroundStyle(.secondary)

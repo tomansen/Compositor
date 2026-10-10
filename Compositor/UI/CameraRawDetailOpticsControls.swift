@@ -91,9 +91,9 @@ struct CameraRawOpticsControls: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             Toggle("Remove Chromatic Aberration", isOn: binding(\.removeChromaticAberration))
-                .help("Pulls red and blue fringes apart toward the center to reduce color edging.")
+                .help(String(localized: "Pulls red and blue fringes apart toward the center to reduce color edging."))
             Toggle("Enable Lens Profile Corrections", isOn: binding(\.enableLensProfile))
-                .help("Applies generic profile strength when camera metadata is not available.")
+                .help(String(localized: "Applies generic profile strength when camera metadata is not available."))
             if raw.optics.enableLensProfile {
                 Text("No lens metadata on this layer. Profile sliders set generic correction strength.")
                     .font(.caption).foregroundStyle(.secondary).fixedSize(horizontal: false, vertical: true)
@@ -107,7 +107,7 @@ struct CameraRawOpticsControls: View {
                          help: String(localized: "Straightens barrel or pincushion bending."))
             HStack(spacing: 10) {
                 Text("Defringe").frame(minWidth: CameraRawControls.labelWidth, alignment: .leading)
-                    .help("Click a purple or green fringe to set its hue range.")
+                    .help(String(localized: "Click a purple or green fringe to set its hue range."))
                 Button {
                     session.filterEdit?.samplesDefringe.toggle()
                     session.brushRevision += 1
@@ -116,7 +116,7 @@ struct CameraRawOpticsControls: View {
                 }
                 .buttonStyle(.borderless)
                 .tint(session.filterEdit?.samplesDefringe == true ? Color.accentColor : Color.secondary)
-                .help("Click a purple or green fringe to set its hue range.")
+                .help(String(localized: "Click a purple or green fringe to set its hue range."))
             }
             if session.filterEdit?.samplesDefringe == true {
                 Text("Click the fringe on the layer. Click the eyedropper again to stop.")
@@ -166,12 +166,12 @@ struct CameraRawOpticsControls: View {
         VStack(alignment: .leading, spacing: 4) {
             Text(title).font(.caption).foregroundStyle(.secondary).help(help)
             HStack(spacing: 8) {
-                Text("Low").font(.caption2).help("Start of the hue range, in degrees.")
+                Text("Low").font(.caption2).help(String(localized: "Start of the hue range, in degrees."))
                 CameraRawSlider(value: raw.optics[keyPath: low], range: CameraRawOpticsSettings.hueRange, track: .plain,
                                 help: String(localized: "Start of the hue range, in degrees."),
                                 onChange: { value in update { $0.cameraRaw.optics[keyPath: low] = value.rounded() } },
                                 onReset: { update { $0.cameraRaw.optics[keyPath: low] = title.contains("Purple") ? 270 : 60 } })
-                Text("High").font(.caption2).help("End of the hue range, in degrees.")
+                Text("High").font(.caption2).help(String(localized: "End of the hue range, in degrees."))
                 CameraRawSlider(value: raw.optics[keyPath: high], range: CameraRawOpticsSettings.hueRange, track: .plain,
                                 help: String(localized: "End of the hue range, in degrees."),
                                 onChange: { value in update { $0.cameraRaw.optics[keyPath: high] = value.rounded() } },
