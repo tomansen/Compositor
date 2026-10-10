@@ -1,4 +1,5 @@
 import SwiftUI
+import Foundation
 
 struct LevelsSheet: View {
     @Bindable var session: EditorSession
@@ -27,20 +28,20 @@ struct LevelsSheet: View {
                 handles(output: false).frame(height: 20)
             }
             HStack {
-                field(String(localized: "Input black"), value(\.black), decimals: 0)
+                field("Input black", value(\.black), decimals: 0)
                 Spacer()
-                field(String(localized: "Gamma"), value(\.gamma), decimals: 2)
+                field("Gamma", value(\.gamma), decimals: 2)
                 Spacer()
-                field(String(localized: "Input white"), value(\.white), decimals: 0)
+                field("Input white", value(\.white), decimals: 0)
             }
             VStack(spacing: 0) {
                 LinearGradient(colors: [.black, .white], startPoint: .leading, endPoint: .trailing).frame(height: 14)
                 handles(output: true).frame(height: 20)
             }
             HStack {
-                field(String(localized: "Output black"), value(\.outputBlack), decimals: 0)
+                field("Output black", value(\.outputBlack), decimals: 0)
                 Spacer()
-                field(String(localized: "Output white"), value(\.outputWhite), decimals: 0)
+                field("Output white", value(\.outputWhite), decimals: 0)
             }
             HStack {
                 Text("Sample").font(.caption).foregroundStyle(.secondary)
@@ -86,14 +87,17 @@ struct LevelsSheet: View {
         .padding(24).frame(width: 440).fixedSize()
         .disabled(edit?.committing == true)
     }
-    private func field(_ name: String, _ binding: Binding<Double>, decimals: Int) -> some View {
-        let range: ClosedRange<Double> = name == "Gamma" ? 0.1...9.99 : 0...255
+    /// `key` stays the English original: it selects the numeric range and names the accessibility
+    /// identifier, so it must not change with the language. Only what is drawn is looked up.
+    private func field(_ key: String, _ binding: Binding<Double>, decimals: Int) -> some View {
+        let range: ClosedRange<Double> = key == "Gamma" ? 0.1...9.99 : 0...255
+        let title = NSLocalizedString(key, comment: "")
         return VStack(alignment: .leading, spacing: 5) {
-            Text(LocalizedStringKey(name)).font(.caption).foregroundStyle(.secondary)
+            Text(title).font(.caption).foregroundStyle(.secondary)
                 .scrubbable(sensitivity: decimals == 0 ? 1 : 0.01, value: binding, range: range)
-            TextField(name, value: binding, format: .number.precision(.fractionLength(decimals)))
+            TextField(title, value: binding, format: .number.precision(.fractionLength(decimals)))
                 .textFieldStyle(.roundedBorder).multilineTextAlignment(.trailing).frame(width: 80)
-                .accessibilityIdentifier("levels\(name.replacingOccurrences(of: " ", with: ""))")
+                .accessibilityIdentifier("levels" + key.replacingOccurrences(of: " ", with: ""))
         }
     }
     private var histogram: some View {

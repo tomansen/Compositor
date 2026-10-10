@@ -27,7 +27,7 @@ struct TransformInspector: View {
                 Toggle(isOn: Binding(get: { session.locksTransformRatio != held.contains(.shift) },
                                      set: { session.locksTransformRatio = $0 != held.contains(.shift) })) { Image(systemName: "link") }
                     .toggleStyle(.button).help(String(localized: "Lock aspect ratio. Hold Shift while dragging a handle to turn it the other way."))
-                TransformValueField(label: "Scale", suffix: "%", value: value.scalePercent(pixelSize: pixelSize), range: 0.1...30_000, finish: finish) { number in
+                TransformValueField(label: "Scale", title: String(localized: "Scale"), suffix: "%", value: value.scalePercent(pixelSize: pixelSize), range: 0.1...30_000, finish: finish) { number in
                     change { value in
                         guard number > 0 else { return }
                         value = value.scaled(toPercent: number, pixelSize: pixelSize)
@@ -101,7 +101,11 @@ struct TransformInspector: View {
 }
 
 private struct TransformValueField: View {
+    /// The field's stable name: it names the accessibility identifier, so it never changes with the language.
     let label: String
+    /// What is drawn. `label` itself for notation that reads the same everywhere (X, Y, °, W, H);
+    /// a localized word where the label is an English word (Scale).
+    var title: String? = nil
     var suffix: String? = nil
     let value: CGFloat
     let range: ClosedRange<CGFloat>
@@ -113,12 +117,12 @@ private struct TransformValueField: View {
     @FocusState private var focused: Bool
     var body: some View {
         HStack(spacing: 4) {
-            Text(label).font(.caption).foregroundStyle(.secondary)
+            Text(title ?? label).font(.caption).foregroundStyle(.secondary)
                 .scrubbable(sensitivity: 1, value: Binding(get: { value }, set: { newValue in
                     change(newValue)
                     text = Self.formatted(Double(newValue))
                 }), range: range, step: 1, onEnd: finish)
-            TextField(label, text: $text)
+            TextField(title ?? label, text: $text)
                 .textFieldStyle(.roundedBorder).focused($focused)
                 .accessibilityIdentifier("transform\(label)")
                 .onAppear { sync() }
