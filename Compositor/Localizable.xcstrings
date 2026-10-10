@@ -81,6 +81,26 @@
         }
       }
     },
+    "%@ is reserved by macOS.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ 已被 macOS 占用。"
+          }
+        }
+      }
+    },
+    "%@ of %@.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@的%@。"
+          }
+        }
+      }
+    },
     "%@ the selection by this many pixels": {
       "localizations": {
         "zh-Hans": {
@@ -97,6 +117,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "%@ 未压缩 RGBA 画布"
+          }
+        }
+      }
+    },
+    "%@ × %@ in at %lld DPI": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ × %@ 英寸，%lld DPI"
           }
         }
       }
@@ -187,6 +217,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "%lld°  %lld"
+          }
+        }
+      }
+    },
+    "(Multiple)": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "（多种）"
           }
         }
       }
@@ -1211,6 +1251,16 @@
         }
       }
     },
+    "Canvas & Layers": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "画布与图层"
+          }
+        }
+      }
+    },
     "Canvas Extension": {
       "localizations": {
         "zh-Hans": {
@@ -1267,6 +1317,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "单元格大小"
+          }
+        }
+      }
+    },
+    "Center": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "居中"
           }
         }
       }
@@ -2901,6 +2961,16 @@
         }
       }
     },
+    "Distort": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "扭曲"
+          }
+        }
+      }
+    },
     "Distort Layer Mask": {
       "localizations": {
         "zh-Hans": {
@@ -3407,6 +3477,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "边缘"
+          }
+        }
+      }
+    },
+    "Edit": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "编辑"
           }
         }
       }
@@ -4111,6 +4191,16 @@
         }
       }
     },
+    "Folder": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "文件夹"
+          }
+        }
+      }
+    },
     "Folder blend mode “%@” isn’t supported. The folder will be pass-through.": {
       "localizations": {
         "zh-Hans": {
@@ -4127,6 +4217,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "字体名称，包括粗体和斜体变体"
+          }
+        }
+      }
+    },
+    "Foreground": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "前景"
           }
         }
       }
@@ -4167,6 +4267,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "格式"
+          }
+        }
+      }
+    },
+    "Free": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "自由"
           }
         }
       }
@@ -6347,6 +6457,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "中等对比度"
+          }
+        }
+      }
+    },
+    "Menus": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "菜单"
           }
         }
       }
@@ -9811,6 +9931,16 @@
         }
       }
     },
+    "Text Editing": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "文本编辑"
+          }
+        }
+      }
+    },
     "Text Size": {
       "localizations": {
         "zh-Hans": {
@@ -10467,6 +10597,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "保留透明度 · sRGB"
+          }
+        }
+      }
+    },
+    "Transparent": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "透明"
           }
         }
       }

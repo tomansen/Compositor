@@ -315,7 +315,8 @@ struct CameraRawMixerControls: View {
 
     private func familySlider(_ index: Int) -> some View {
         let key = mixerKey
-        let help = "\((edit?.cameraRawMixerTab ?? .hue).rawValue) of \(CameraRawMixerSettings.names[index])."
+        // 形参顺序按中文语序排：「红色的色相」=「%@的%@」，因此先传颜色族、再传标签。
+        let help = localized("%@ of %@.", CameraRawMixerSettings.names[index], (edit?.cameraRawMixerTab ?? .hue).displayName)
         return HStack {
             Text(CameraRawMixerSettings.names[index]).frame(width: 78, alignment: .leading).help(help)
                 .scrubbable(sensitivity: 1,
@@ -446,7 +447,7 @@ struct CameraRawGradingControls: View {
                     wheel(String(localized: "Highlights"), \.highlights)
                 }
             } else {
-                wheel(page.rawValue, pageKey)
+                wheel(page.displayName, pageKey)
             }
             slider(String(localized: "Blending"), raw.grading.blending, 0...100, 50, "Controls how much the three tonal wheels overlap.") { value in
                 update { $0.grading.blending = value }

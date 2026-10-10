@@ -126,7 +126,7 @@ extension EditorSession {
             // Only write over the layer the invert was computed from.
             guard let current = self.document?.layers[safe: index], current.id == layer.id,
                   current.asset?.image === layer.asset?.image, current.mask?.asset.image === layer.mask?.asset.image else { return }
-            beginEdit(mask ? String(localized: "Invert Mask") : "Invert")
+            beginEdit(mask ? String(localized: "Invert Mask") : String(localized: "Invert"))
             if mask {
                 self.document?.layers[index].mask = current.mask.map { $0.replacing(asset) } ?? LayerMask(asset: asset)
             } else {

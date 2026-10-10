@@ -141,11 +141,15 @@ private struct TypeFontPicker: NSViewRepresentable {
     }
 
     /// Selected letters in more than one face: the menu says so with an item of its own at the top, which isn't a font.
+    ///
+    /// 英文常量只用来当身份哨兵（写进 `representedObject`，`isMultiple` 比对它），**显示名单独本地化** ——
+    /// 否则 `(Multiple)` 会以英文出现在字体菜单里，而一旦把哨兵也译掉，`representedObject` 便不再稳定。
     private static let multiple = "(Multiple)"
+    private static var multipleTitle: String { String(localized: "(Multiple)") }
     private static func isMultiple(_ item: NSMenuItem?) -> Bool { item?.representedObject as? String == multiple }
     static func showMultiple(in button: NSPopUpButton) {
         if !isMultiple(button.item(at: 0)) {
-            let item = NSMenuItem(title: multiple, action: nil, keyEquivalent: "")
+            let item = NSMenuItem(title: multipleTitle, action: nil, keyEquivalent: "")
             item.representedObject = multiple
             button.menu?.insertItem(item, at: 0)
         }

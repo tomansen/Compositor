@@ -122,9 +122,9 @@ struct NewCanvasSheet: View {
                 }
             }
             HStack(spacing: 16) {
-                dimension("Width", text: $width, field: .width)
+                dimension("Width", id: "width", text: $width, field: .width)
                 Image(systemName: "multiply").foregroundStyle(.tertiary).padding(.top, 20)
-                dimension("Height", text: $height, field: .height)
+                dimension("Height", id: "height", text: $height, field: .height)
             }
             // The settings are pills, each changed the same way: click to step to the next choice.
             HStack(spacing: 4) {
@@ -200,13 +200,15 @@ struct NewCanvasSheet: View {
         }
         return nil
     }
-    private func dimension(_ title: String, text: Binding<String>, field: Field) -> some View {
+    /// 标题走 `LocalizedStringKey`（编译器会自动提取并查表）；`id` 单独保留英文，
+    /// 因为 UI 测试用 `widthInput` / `heightInput` 定位输入框，改用中文会让测试失效。
+    private func dimension(_ title: LocalizedStringKey, id: String, text: Binding<String>, field: Field) -> some View {
         VStack(alignment: .leading, spacing: 8) {
             Text(title).font(.callout.weight(.medium))
             HStack {
                 TextField(title, text: text).textFieldStyle(.plain)
                     .focused($focusedField, equals: field)
-                    .accessibilityIdentifier(title.lowercased() + "Input")
+                    .accessibilityIdentifier(id + "Input")
                 Text(unit.rawValue).foregroundStyle(.secondary)
             }
             .padding(12).background(.quaternary.opacity(0.5), in: RoundedRectangle(cornerRadius: 7))

@@ -119,7 +119,7 @@ final class ProjectController {
         guard let options, let snapshot = session.projectSnapshot() else { return }
         do {
             let resized = try await CanvasResizer.shared.resize(snapshot, to: options)
-            session.applyDocumentSize(resized, actionName: "Canvas Size")
+            session.applyDocumentSize(resized, actionName: String(localized: "Canvas Size"))
         } catch { await showError(String(localized: "Couldn’t change canvas size"), error: error) }
     }
 
@@ -151,7 +151,7 @@ final class ProjectController {
         let options: TrimOptions? = await withCheckedContinuation { continuation in
             let sheet = NSWindow()
             sheet.styleMask = [.titled, .fullSizeContentView]
-            sheet.title = "Trim"
+            sheet.title = String(localized: "Trim")
             sheet.contentViewController = NSHostingController(rootView: TrimSheet { options in
                 window.endSheet(sheet)
                 sheet.orderOut(nil)
@@ -165,7 +165,7 @@ final class ProjectController {
             guard let resized = try await ImageTrim.trim(snapshot, options: options) else {
                 return
             }
-            session.applyDocumentSize(resized, actionName: "Trim")
+            session.applyDocumentSize(resized, actionName: String(localized: "Trim"))
         } catch { await showError(String(localized: "Couldn’t trim image"), error: error) }
     }
 
@@ -178,7 +178,7 @@ final class ProjectController {
         let settings: (LayoutGrid, GridAppearance)? = await withCheckedContinuation { continuation in
             let sheet = NSWindow()
             sheet.styleMask = [.titled, .fullSizeContentView]
-            sheet.title = "Grid"
+            sheet.title = String(localized: "Grid")
             sheet.contentViewController = NSHostingController(rootView: GridSettingsSheet(
                 session: session, grid: original.grid, appearance: original.appearance,
                 preview: { [session] grid, appearance in

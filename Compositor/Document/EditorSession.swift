@@ -853,7 +853,7 @@ final class EditorSession {
                                                                          remainingPixels: DocumentLimits.documentPixelBudget - usedPixels)
                     insert(asset, centeredAt: point)
                 } else if PSDReader.matches(url) {
-                    beginPSDReading(title: String(localized: "Open “\(url.lastPathComponent)”?"), confirmTitle: "Import")
+                    beginPSDReading(title: String(localized: "Open “\(url.lastPathComponent)”?"), confirmTitle: String(localized: "Import"))
                     let imported: PSDImport
                     do {
                         let parsed = try await ImageImporter.shared.loadPhotoshop(url, remainingPixels: DocumentLimits.documentPixelBudget - usedPixels)

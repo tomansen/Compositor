@@ -176,7 +176,7 @@ final class ShortcutSettings {
                 return String(localized: "Text-editing shortcuts need Command, Option, or Control so they do not replace normal typing.")
             }
             if [ShortcutChord("q", 1), ShortcutChord(",", 1), ShortcutChord("m", 3)].contains(chord) {
-                return "\(chord.label) is reserved by macOS."
+                return localized("%@ is reserved by macOS.", chord.label)
             }
             if let other = assigned[chord] {
                 return localized("%@ is assigned to both %@ and %@.", chord.label, other, definition.displayTitle)
