@@ -87,7 +87,7 @@ enum CommandPaletteSearch {
     /// The entries that match, best first, with enabled ones ahead of disabled; with no query, all of them in menu
     /// order, enabled first.
     static func rank(_ entries: [CommandPaletteEntry], query: String) -> [CommandPaletteEntry] {
-        let scored = entries.enumerated().compactMap { index, entry in
+        let scored = entries.enumerated().compactMap { index, entry -> (CommandPaletteEntry, Int, Int)? in
             // 显示名已本地化；英文 id 作为搜索别名一起打分，「lasso」之类英文输入照样命中。
             let byTitle = score(query, in: entry.title) ?? Int.min
             let byAlias = score(query, in: entry.id) ?? Int.min
