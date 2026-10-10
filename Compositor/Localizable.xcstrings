@@ -731,6 +731,16 @@
         }
       }
     },
+    "Apply current canvas operation": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "应用当前画布操作"
+          }
+        }
+      }
+    },
     "Apply outside this range instead": {
       "localizations": {
         "zh-Hans": {
@@ -1091,6 +1101,16 @@
         }
       }
     },
+    "Blur / Smudge / Liquify": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "模糊 / 涂抹 / 液化"
+          }
+        }
+      }
+    },
     "Boost": {
       "localizations": {
         "zh-Hans": {
@@ -1221,6 +1241,16 @@
         }
       }
     },
+    "Brush tool": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "画笔工具"
+          }
+        }
+      }
+    },
     "CFBundleName": {
       "localizations": {
         "zh-Hans": {
@@ -1257,6 +1287,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "取消 "
+          }
+        }
+      }
+    },
+    "Cancel current canvas operation": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "取消当前画布操作"
           }
         }
       }
@@ -2291,6 +2331,16 @@
         }
       }
     },
+    "Controls how much the three tonal wheels overlap.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "控制三个色调轮之间的重叠程度。"
+          }
+        }
+      }
+    },
     "Controls how strong the sharpening is.": {
       "localizations": {
         "zh-Hans": {
@@ -2521,6 +2571,16 @@
         }
       }
     },
+    "Crop tool": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "裁剪工具"
+          }
+        }
+      }
+    },
     "Cropped to the canvas so the file fits in memory. Pixels outside the canvas weren't imported.": {
       "localizations": {
         "zh-Hans": {
@@ -2611,6 +2671,16 @@
         }
       }
     },
+    "Cyan": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "青色"
+          }
+        }
+      }
+    },
     "Cyan / Red": {
       "localizations": {
         "zh-Hans": {
@@ -2637,6 +2707,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "循环切换形状类型"
+          }
+        }
+      }
+    },
+    "Cycle tool mode": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "循环工具模式"
           }
         }
       }
@@ -2707,6 +2787,56 @@
           "stringUnit": {
             "state": "translated",
             "value": "降低画笔硬度"
+          }
+        }
+      }
+    },
+    "Decrease brush size": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "减小画笔大小"
+          }
+        }
+      }
+    },
+    "Decrease leading": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "减小行距"
+          }
+        }
+      }
+    },
+    "Decrease leading by 10": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "减小行距 10"
+          }
+        }
+      }
+    },
+    "Decrease tracking": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "减小字距"
+          }
+        }
+      }
+    },
+    "Decrease tracking by 10": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "减小字距 10"
           }
         }
       }
@@ -2867,6 +2997,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "删除所选图层"
+          }
+        }
+      }
+    },
+    "Delete selection / layer / effect / lasso point": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "删除选区 / 图层 / 效果 / 套索点"
           }
         }
       }
@@ -3931,6 +4071,16 @@
         }
       }
     },
+    "Eyedropper tool": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "吸管工具"
+          }
+        }
+      }
+    },
     "Fade the edge of the selection by this many pixels": {
       "localizations": {
         "zh-Hans": {
@@ -4077,6 +4227,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "最终尺寸每边须为 1–%@ 像素。"
+          }
+        }
+      }
+    },
+    "Finish editing text": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "完成文本编辑"
           }
         }
       }
@@ -4441,6 +4601,16 @@
         }
       }
     },
+    "Gradient tool": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "渐变工具"
+          }
+        }
+      }
+    },
     "Grading": {
       "localizations": {
         "zh-Hans": {
@@ -4677,6 +4847,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "抓手 (H)"
+          }
+        }
+      }
+    },
+    "Hand tool": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "抓手工具"
           }
         }
       }
@@ -5091,6 +5271,16 @@
         }
       }
     },
+    "How much the curve also changes color strength. Zero matches Photoshop; lower keeps it to brightness, higher adds more color.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "曲线同时改变颜色强度的程度。0 与 Photoshop 一致；更低则只影响明度，更高则加入更多颜色。"
+          }
+        }
+      }
+    },
     "Hue": {
       "localizations": {
         "zh-Hans": {
@@ -5361,6 +5551,56 @@
         }
       }
     },
+    "Increase brush size": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "增大画笔大小"
+          }
+        }
+      }
+    },
+    "Increase leading": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "增大行距"
+          }
+        }
+      }
+    },
+    "Increase leading by 10": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "增大行距 10"
+          }
+        }
+      }
+    },
+    "Increase tracking": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "增大字距"
+          }
+        }
+      }
+    },
+    "Increase tracking by 10": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "增大字距 10"
+          }
+        }
+      }
+    },
     "Inner Glow": {
       "localizations": {
         "zh-Hans": {
@@ -5601,6 +5841,16 @@
         }
       }
     },
+    "Lasso / cycle mode": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "套索 / 循环模式"
+          }
+        }
+      }
+    },
     "Last Filter": {
       "localizations": {
         "zh-Hans": {
@@ -5817,6 +6067,46 @@
           "stringUnit": {
             "state": "translated",
             "value": "图像明亮处提升线条，为负值时则降低线条，使其随图像形状隆起"
+          }
+        }
+      }
+    },
+    "Lifts or lowers the brightest tones.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "抬高或压低最亮的色调。"
+          }
+        }
+      }
+    },
+    "Lifts or lowers the dark tones.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "抬高或压低暗部色调。"
+          }
+        }
+      }
+    },
+    "Lifts or lowers the darkest tones.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "抬高或压低最暗的色调。"
+          }
+        }
+      }
+    },
+    "Lifts or lowers the light tones.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "抬高或压低亮部色调。"
           }
         }
       }
@@ -6271,6 +6561,16 @@
         }
       }
     },
+    "Magenta": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "洋红"
+          }
+        }
+      }
+    },
     "Magenta / Green": {
       "localizations": {
         "zh-Hans": {
@@ -6401,6 +6701,26 @@
         }
       }
     },
+    "Makes the selected color family lighter or darker.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "让所选色族更亮或更暗。"
+          }
+        }
+      }
+    },
+    "Makes the selected color family stronger or quieter.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "让所选色族的色彩更浓或更淡。"
+          }
+        }
+      }
+    },
     "Makes the vignette rounder or more square.": {
       "localizations": {
         "zh-Hans": {
@@ -6437,6 +6757,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "选框 (M)"
+          }
+        }
+      }
+    },
+    "Marquee / cycle shape": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "选框 / 循环形状"
           }
         }
       }
@@ -6507,6 +6837,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "匹配所点击的像素，或其周围像素的平均值"
+          }
+        }
+      }
+    },
+    "Medium Blue": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "中蓝"
           }
         }
       }
@@ -6671,12 +7011,32 @@
         }
       }
     },
+    "Move / Transform": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "移动 / 变换"
+          }
+        }
+      }
+    },
     "Move / Transform (V)": {
       "localizations": {
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
             "value": "移动 / 变换 (V)"
+          }
+        }
+      }
+    },
+    "Move / Transform tool": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "移动 / 变换工具"
           }
         }
       }
@@ -8521,6 +8881,16 @@
         }
       }
     },
+    "Reset colors": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "重置颜色"
+          }
+        }
+      }
+    },
     "Reset curve": {
       "localizations": {
         "zh-Hans": {
@@ -9091,6 +9461,16 @@
         }
       }
     },
+    "Select tool": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "选择工具"
+          }
+        }
+      }
+    },
     "Selected": {
       "localizations": {
         "zh-Hans": {
@@ -9187,6 +9567,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "形状 (U) · Shift-U 切换矩形/椭圆"
+          }
+        }
+      }
+    },
+    "Shape tool": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "形状工具"
           }
         }
       }
@@ -9307,6 +9697,26 @@
           "stringUnit": {
             "state": "translated",
             "value": "使图像从绿色移向紫红色。"
+          }
+        }
+      }
+    },
+    "Shifts the selected color family around the wheel.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "将所选色族沿色轮移动。"
+          }
+        }
+      }
+    },
+    "Shifts the wheels toward shadows or highlights.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "让色调轮偏向阴影或高光。"
           }
         }
       }
@@ -9681,6 +10091,16 @@
         }
       }
     },
+    "Spot Healing Brush": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "污点修复画笔"
+          }
+        }
+      }
+    },
     "Spot Healing Brush (J)": {
       "localizations": {
         "zh-Hans": {
@@ -9941,6 +10361,16 @@
         }
       }
     },
+    "Swap foreground/background": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "交换前景色/背景色"
+          }
+        }
+      }
+    },
     "Tab": {
       "localizations": {
         "zh-Hans": {
@@ -9987,6 +10417,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "色温"
+          }
+        }
+      }
+    },
+    "Temporary Hand tool (hold)": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "临时抓手工具（按住）"
           }
         }
       }
@@ -10461,6 +10901,16 @@
         }
       }
     },
+    "Toggle Fullscreen: the canvas alone on black (Esc also leaves)": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "切换全屏：仅画布置于黑底（按 Esc 也可退出）"
+          }
+        }
+      }
+    },
     "Toggle Levels preview": {
       "localizations": {
         "zh-Hans": {
@@ -10747,6 +11197,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "文字 (T)"
+          }
+        }
+      }
+    },
+    "Type tool": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "文字工具"
           }
         }
       }
@@ -11211,6 +11671,16 @@
         }
       }
     },
+    "Yellow": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "黄色"
+          }
+        }
+      }
+    },
     "Yellow / Blue": {
       "localizations": {
         "zh-Hans": {
@@ -11367,6 +11837,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "缩放百分比 (0.1–3200%)。按回车应用。"
+          }
+        }
+      }
+    },
+    "Zoom tool": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "缩放工具"
           }
         }
       }

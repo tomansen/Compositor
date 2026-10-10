@@ -33,10 +33,10 @@ struct CameraRawCurveControls: View {
                       ? "Drag up or down to lift or lower those tones. Drag a divider along the bottom to change which tones each region covers."
                       : "Drag a point. Click to add one. Double-click a point to remove it.")
             if edit?.cameraRawCurvePage != .point {
-                amount(String(localized: "Highlights"), \.highlights, "Lifts or lowers the brightest tones.")
-                amount(String(localized: "Lights"), \.lights, "Lifts or lowers the light tones.")
-                amount(String(localized: "Darks"), \.darks, "Lifts or lowers the dark tones.")
-                amount(String(localized: "Shadows"), \.shadows, "Lifts or lowers the darkest tones.")
+                amount(String(localized: "Highlights"), \.highlights, String(localized: "Lifts or lowers the brightest tones."))
+                amount(String(localized: "Lights"), \.lights, String(localized: "Lifts or lowers the light tones."))
+                amount(String(localized: "Darks"), \.darks, String(localized: "Lifts or lowers the dark tones."))
+                amount(String(localized: "Shadows"), \.shadows, String(localized: "Lifts or lowers the darkest tones."))
             } else {
                 if let point = selectedPoint {
                     Text(String(localized: "In \(Int((point.x * 255).rounded()))   Out \(Int((point.y * 255).rounded()))"))
@@ -52,7 +52,7 @@ struct CameraRawCurveControls: View {
                 }
                 .help(String(localized: "Replaces this curve with a straight line or a contrast curve."))
                 if edit?.cameraRawPointChannel == .rgb {
-                    slider(String(localized: "Refine Saturation"), \.refineSaturation, -100...100, 0, "How much the curve also changes color strength. Zero matches Photoshop; lower keeps it to brightness, higher adds more color.")
+                    slider(String(localized: "Refine Saturation"), \.refineSaturation, -100...100, 0, String(localized: "How much the curve also changes color strength. Zero matches Photoshop; lower keeps it to brightness, higher adds more color."))
                 }
             }
             targetButton(armed: edit?.targetsCameraRawCurve == true, help: String(localized: "Drag on the picture to move the curve for the tone under the pointer.")) {
@@ -287,9 +287,9 @@ struct CameraRawMixerControls: View {
                 ForEach(0..<8, id: \.self) { index in familySlider(index) }
             case .color:
                 swatches
-                colorSlider(String(localized: "Hue"), \.hue, "Shifts the selected color family around the wheel.")
-                colorSlider(String(localized: "Saturation"), \.saturation, "Makes the selected color family stronger or quieter.")
-                colorSlider(String(localized: "Luminance"), \.luminance, "Makes the selected color family lighter or darker.")
+                colorSlider(String(localized: "Hue"), \.hue, String(localized: "Shifts the selected color family around the wheel."))
+                colorSlider(String(localized: "Saturation"), \.saturation, String(localized: "Makes the selected color family stronger or quieter."))
+                colorSlider(String(localized: "Luminance"), \.luminance, String(localized: "Makes the selected color family lighter or darker."))
             case .point:
                 pointColor
             }
@@ -449,10 +449,10 @@ struct CameraRawGradingControls: View {
             } else {
                 wheel(page.displayName, pageKey)
             }
-            slider(String(localized: "Blending"), raw.grading.blending, 0...100, 50, "Controls how much the three tonal wheels overlap.") { value in
+            slider(String(localized: "Blending"), raw.grading.blending, 0...100, 50, String(localized: "Controls how much the three tonal wheels overlap.")) { value in
                 update { $0.grading.blending = value }
             }
-            slider(String(localized: "Balance"), raw.grading.balance, -100...100, 0, "Shifts the wheels toward shadows or highlights.") { value in
+            slider(String(localized: "Balance"), raw.grading.balance, -100...100, 0, String(localized: "Shifts the wheels toward shadows or highlights.")) { value in
                 update { $0.grading.balance = value }
             }
         }
