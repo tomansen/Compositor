@@ -258,7 +258,7 @@ final class ProjectWorkspace {
                     opacity: layer.opacity, blendMode: layer.blendMode, mask: mask, maskSourceID: layer.maskSourceID.flatMap { mapping[$0] }, adjustment: layer.adjustment, shape: layer.shape, effects: layer.effects, text: layer.text)
             }
             target.session.isProjectBusy = false
-            target.session.beginEdit("Copy Layers from Project")
+            target.session.beginEdit(String(localized: "Copy Layers from Project"))
             if target.session.document == nil { target.session.createDocument(width: Int(size.width), height: Int(size.height)) }
             target.session.document?.layers.append(contentsOf: layers)
             target.session.activeLayerID = mapping[id]

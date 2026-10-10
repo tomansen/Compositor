@@ -13,7 +13,7 @@ struct LassoControls: View {
                             session.cancelLasso()
                             session.marqueeKind = kind
                         })) {
-                            ForEach(LassoKind.marqueeChoices, id: \.self) { Text($0.rawValue).tag($0) }
+                            ForEach(LassoKind.marqueeChoices, id: \.self) { Text($0.displayName).tag($0) }
                         }
                         .pickerStyle(.segmented).labelsHidden().fixedSize()
                         .help("Press M to switch between Rectangle and Ellipse")
@@ -23,7 +23,7 @@ struct LassoControls: View {
                             session.cancelLasso()
                             session.wandMode = mode
                         })) {
-                            ForEach(WandMode.allCases, id: \.self) { Text($0.rawValue).tag($0) }
+                            ForEach(WandMode.allCases, id: \.self) { Text($0.displayName).tag($0) }
                         }
                         .pickerStyle(.segmented).labelsHidden().fixedSize()
                         .help("Press Tab to switch between Wand and Object")
@@ -33,7 +33,7 @@ struct LassoControls: View {
                             session.cancelLasso()
                             session.lassoKind = kind
                         })) {
-                            ForEach(LassoKind.lassoChoices, id: \.self) { Text($0.rawValue).tag($0) }
+                            ForEach(LassoKind.lassoChoices, id: \.self) { Text($0.displayName).tag($0) }
                         }
                         .pickerStyle(.segmented).labelsHidden().fixedSize()
                         .help("Press L to switch between Freehand and Polygonal")
@@ -41,7 +41,7 @@ struct LassoControls: View {
                     // Shows held Shift/Option (or an outline's mode) live; clicking sets the choice.
                     Picker("Mode", selection: Binding(get: { session.displayedSelectionMode },
                                                       set: { session.selectionModeChoice = $0 })) {
-                        ForEach(SelectionMode.allCases, id: \.self) { Text($0.rawValue).tag($0) }
+                        ForEach(SelectionMode.allCases, id: \.self) { Text($0.displayName).tag($0) }
                     }
                                                       .pickerStyle(.segmented).labelsHidden().fixedSize()
                                                       .help("Hold Shift to add or Option to subtract for one outline")
@@ -53,10 +53,10 @@ struct LassoControls: View {
                             .help(session.tool == .wand && session.wandMode == .object ? "Smooth the detected object outline; turn off for the raw pixel mask" : "Smooth selection edges; turn off for hard pixel edges")
                     }
                     Divider().frame(height: 18)
-                    modifyControl("Expand", amount: $session.selectionExpandAmount) {
+                    modifyControl(String(localized: "Expand"), amount: $session.selectionExpandAmount) {
                         session.expandSelection(by: session.selectionExpandAmount)
                     }
-                    modifyControl("Contract", amount: $session.selectionContractAmount) {
+                    modifyControl(String(localized: "Contract"), amount: $session.selectionContractAmount) {
                         session.contractSelection(by: session.selectionContractAmount)
                     }
                     // Softens the selection's edge, as Select → Feather does.
@@ -101,7 +101,7 @@ struct LassoControls: View {
             }
             .help("How far each color channel (0–255) can differ from the clicked color and still be selected")
             Picker("Sample Size", selection: $session.wandSettings.sampleSize) {
-                ForEach(WandSampleSize.allCases, id: \.self) { Text($0.title).tag($0) }
+                ForEach(WandSampleSize.allCases, id: \.self) { Text($0.displayName).tag($0) }
             }
             .labelsHidden().fixedSize()
             .help("Match the clicked pixel, or the average of the pixels around it")

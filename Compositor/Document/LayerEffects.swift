@@ -256,7 +256,7 @@ extension EditorSession {
             effects.innerGlow = InnerGlowEffect()
         default: break
         }
-        setEffects(effects, on: id, name: "Add " + kind.rawValue)
+        setEffects(effects, on: id, name: localized("Add %@", kind.displayName))
         selectEffect(kind, on: id, editing: true)
         effectsEditingOriginal = original
     }
