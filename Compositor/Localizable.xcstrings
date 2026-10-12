@@ -61,6 +61,26 @@
         }
       }
     },
+    "%@ %@ is now available — you have %@. Would you like to download it now?": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ %@ 现已可用，当前为 %@。要现在下载吗？"
+          }
+        }
+      }
+    },
+    "%@ %@ is ready to install — you have %@.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ %@ 已可安装，当前为 %@。"
+          }
+        }
+      }
+    },
     "%@ color": {
       "localizations": {
         "zh-Hans": {
@@ -287,6 +307,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "比版本 1 略强一些。下方滑块仍远不及当前效果。"
+          }
+        }
+      }
+    },
+    "A new version of %@ is available!": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ 有新版本可用！"
           }
         }
       }
@@ -817,6 +847,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "自动平衡平均颜色。自定则跟随色温和色调。"
+          }
+        }
+      }
+    },
+    "Automatically download and install updates in the future": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "以后自动下载并安装更新"
           }
         }
       }
@@ -1427,6 +1467,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "检查更新…"
+          }
+        }
+      }
+    },
+    "Choose a JPEG, PNG, HEIC, TIFF, WebP, or Photoshop (PSD) file.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "请选择 JPEG、PNG、HEIC、TIFF、WebP 或 Photoshop (PSD) 文件。"
           }
         }
       }
@@ -5711,6 +5761,26 @@
         }
       }
     },
+    "Install Update": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "安装更新"
+          }
+        }
+      }
+    },
+    "Install and Relaunch": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "安装并重新启动"
+          }
+        }
+      }
+    },
     "Inverse": {
       "localizations": {
         "zh-Hans": {
@@ -8731,6 +8801,16 @@
         }
       }
     },
+    "Remind Me Later": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "稍后提醒我"
+          }
+        }
+      }
+    },
     "Remove": {
       "localizations": {
         "zh-Hans": {
@@ -9921,6 +10001,16 @@
         }
       }
     },
+    "Skip This Version": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "跳过此版本"
+          }
+        }
+      }
+    },
     "Smear": {
       "localizations": {
         "zh-Hans": {
@@ -10067,6 +10157,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "柔化暗角的边缘。"
+          }
+        }
+      }
+    },
+    "Some dropped items couldn’t be read. Drag JPEG, PNG, HEIC, TIFF, WebP, or Photoshop (PSD) files from Finder.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "部分拖入的项目无法读取。请从访达拖入 JPEG、PNG、HEIC、TIFF、WebP 或 Photoshop (PSD) 文件。"
           }
         }
       }
@@ -11577,6 +11677,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "减弱紫色色相范围内的紫色边缘。"
+          }
+        }
+      }
+    },
+    "What’s new": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "新增内容"
           }
         }
       }
